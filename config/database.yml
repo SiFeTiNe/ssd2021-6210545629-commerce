@@ -34,7 +34,7 @@ development:
 
   # The password associated with the postgres role (username).
   #password:
-  password: koonkiki0192
+  password: password
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -61,7 +61,7 @@ test:
   <<: *default
   database: demo_test
   username: postgres
-  password: koonkiki0192
+  password: password
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: demo_production
-  username: demo
-  password: <%= ENV['DEMO_DATABASE_PASSWORD'] %>
+  database: product_production
+  username: product
+  password: <%= ENV['PRODUCT_DATABASE_PASSWORD'] %>
