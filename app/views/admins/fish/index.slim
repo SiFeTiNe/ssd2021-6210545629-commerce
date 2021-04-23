@@ -1,0 +1,68 @@
+h1 This is products list
+row
+  -if current_admin
+        span.ml-3 = current_admin.email
+        span.ml-3 = link_to 'Logout', destroy_admin_session_path , method: :delete
+  -else
+    span.ml = link_to 'Login', admin_session_path
+row.mt-2
+    table.table.table-bordered.table-striped.table-hover
+      thead.thead-dark
+        tr
+          th ID
+          th Title
+          th Description
+          th Stock 
+          th Price
+          th Status
+          th Created at
+          th Updated at
+          th Image
+          th Action
+      tbody
+        - @fish.each do |a|
+          tr
+            td = a.id
+            td.font-weight-bold = a.title
+            td = a.description
+            td = a.stock
+            td = "#{a.price} Baht" 
+            td = a.status.presence || 'NA'
+            td.font-weight-light = "#{time_ago_in_words(a.created_at)} Ago"
+            td.font-weight-light = "#{time_ago_in_words(a.updated_at)} Ago"
+            -if a.primary_image.attached?
+              td = image_tag(a.primary_image)
+            -else
+              td = 'None'
+            td
+              span
+                = link_to admins_fish_path(a) do
+                  i.fas.fa-eye
+              -if current_admin
+                span.ml-2
+                  = link_to edit_admins_fish_path(a) do
+                    i.fas.fa-pen
+                span.ml-2
+                  = link_to admins_fish_path(a), method: :delete, data: { confirm: "Are you sure?" } do
+                    i.fas.fa-trash
+
+span.ml = link_to 'Category',admins_categories_path
+-if current_admin
+  div.mb-2
+    = link_to new_admins_fish_path do
+      = button_tag 'Add new Product', class: 'btn btn-primary'
+
+.row
+  .col-6
+    = paginate @fish
+
+.row
+  .col
+    .float-right
+      div.mb-2
+      = link_to '/fish.csv' do
+        = button_tag 'Download', class: 'btn btn-primary'
+    -if current_admin
+      = form_tag admins_fish_csv_upload_path, multipart: true do
+        div = file_field_tag :csv_file
+        div = submit_tag :upload

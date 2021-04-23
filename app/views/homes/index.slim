@@ -1,0 +1,41 @@
+h1 This is products list
+
+row
+    span.ml = link_to 'admin', admins_fish_index_path
+row.mt-2
+    table.table.table-bordered.table-striped.table-hover
+      thead.thead-dark
+        tr
+          th ID
+          th Title
+          th Description
+          th Stock 
+          th Price
+          th Status
+          th Created at
+          th Updated at
+          th Image
+          th Action
+      tbody
+        - @fish.each do |a|
+          tr
+            td = a.id
+            td.font-weight-bold = a.title
+            td = a.description
+            td = a.stock
+            td = "#{a.price} Baht" 
+            td = a.status.presence || 'NA'
+            td.font-weight-light = "#{time_ago_in_words(a.created_at)} Ago"
+            td.font-weight-light = "#{time_ago_in_words(a.updated_at)} Ago"
+            -if a.primary_image.attached?
+              td = image_tag(a.primary_image)
+            -else
+              td = 'None'
+            td
+              span
+                = link_to home_path(a) do
+                  i.fas.fa-eye
+
+.row
+  .col-6
+    = paginate @fish

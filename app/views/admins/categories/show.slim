@@ -1,0 +1,19 @@
+h1 = @categories.title
+div = link_to 'Back', admins_categories_path
+hr
+h2 = "Description"
+hr
+div = @categories.description
+hr
+h2 = "List of the fish in this category"
+div
+  - @categories.fish.each do |f|
+    div = link_to "#{f.title}" , admins_fish_path(f)
+
+-if current_admin
+  h2 Add new fish to this category
+  = form_with model: [:admins,@categories, @categories.fish_category.build] do |f|
+    div = f.collection_select :result, Fish.all ,:description,:title
+    div = f.submit 'Add Category'
+
+

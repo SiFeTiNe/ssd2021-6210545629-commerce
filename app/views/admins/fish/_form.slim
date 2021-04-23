@@ -1,0 +1,12 @@
+= form_with model: [:admins, fish] do |f|
+  div = f.text_field :title, placeholder: 'Title'
+  div = f.text_area :description, placeholder: 'Write the description here'
+  div = f.number_field :stock, placeholder: 'Stock'
+  div = f.number_field :price, placeholder: 'Price'
+  h3 Status
+  div = f.collection_check_boxes :status, Fish.statuses.map, :last, :first
+  h3 Primary Image 
+  div = f.file_field :primary_image
+  h3 Other Images 
+  div = f.file_field :supported_images, multiple: true
+  div = f.submit 'Submit Product'

@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   devise_for :admins
-  get 'test_products/index'
-  root 'products#index'
-  #
-  # get '/welcomes', to: 'welcomes#index'
-  # get '/products', to: 'products#index'
+  root "homes#index"
+  resources :homes
+  namespace :admins do
+    resources :fish do
+      member do
+        delete :delete_image
+      end
+    end
+    resources :categories do
+      resources :fish_categories
+    end
+    namespace :fish do
+      post 'csv_upload'
+    end
+  end
 
-  resources :test_products, only: :index
 end
