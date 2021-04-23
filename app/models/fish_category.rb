@@ -1,4 +1,4 @@
-class FishCategory < ApplicationRecord
-  belongs_to :fish
+class ItemCategory < ApplicationRecord
+  belongs_to :item
   belongs_to :category
 end
