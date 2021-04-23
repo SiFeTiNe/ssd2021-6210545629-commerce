@@ -1,7 +1,7 @@
 h1 This is products list
 
 row
-    span.ml = link_to 'admin', admins_item_index_path
+    span.ml = link_to 'admin', admins_fish_index_path
 row.mt-2
     table.table.table-bordered.table-striped.table-hover
       thead.thead-dark
@@ -17,7 +17,7 @@ row.mt-2
           th Image
           th Action
       tbody
-        - @item.each do |a|
+        - @fish.each do |a|
           tr
             td = a.id
             td.font-weight-bold = a.title
@@ -38,4 +38,4 @@ row.mt-2
 
 .row
   .col-6
-    = paginate @item
+    = paginate @fish

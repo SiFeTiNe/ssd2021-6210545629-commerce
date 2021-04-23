@@ -1,15 +1,17 @@
 h1 = @fish.title
 -if @fish.primary_image.attached?
   div = image_tag(@fish.primary_image)
+  div = link_to 'Remove', delete_image_admins_fish_url(@fish.primary_image.id),method: :delete
 -if @fish.supported_images.attached?
   h2 Others
   -(0...@fish.supported_images.count).each do |f|
     div = image_tag(@fish.supported_images[f])
+    div = link_to 'Remove', delete_image_admins_fish_url(@fish.supported_images[f].id),method: :delete
 hr
 h2 = "Categories"
 div
   - @fish.category.each do |f|
-    p = "#{f.title}"
+    div = link_to "#{f.title}" , admins_categories_path(f)
 hr
 h3 = "Description"
 div = @fish.description
@@ -20,4 +22,5 @@ hr
 h3 = "Price"
 hr
 div = @fish.price
-div = link_to 'Back', homes_path
+div = link_to 'Back', admins_fish_index_path
+

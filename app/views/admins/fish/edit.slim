@@ -1,0 +1,13 @@
+h1 Edit Product
+-if @fish.primary_image.attached?
+  div = image_tag(@fish.primary_image)
+  div = link_to 'Remove', delete_image_admins_fish_url(@fish.primary_image.id),method: :delete
+-if @fish.supported_images.attached?
+  h2 Others
+  -(0...@fish.supported_images.count).each do |f|
+    div = image_tag(@fish.supported_images[f])
+    div = link_to 'Remove', delete_image_admins_fish_url(@fish.supported_images[f].id),method: :delete
+
+br
+= render 'form', fish: @fish
+div = link_to 'Back', admins_fish_index_path
