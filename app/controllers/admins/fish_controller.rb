@@ -5,7 +5,7 @@ class Admins::FishController < ApplicationController
     @fish = @fish.page(params[:page]).per(5)
     respond_to do |format|
       format.html
-      format.csv { send_data generate_csv(Fish.all), file_name: 'fish.csv' }
+      format.csv { send_data generate_csv(Fish.all), file_name: 'item.csv' }
     end
   end
 
