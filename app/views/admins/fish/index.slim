@@ -20,7 +20,7 @@ row.mt-2
           th Image
           th Action
       tbody
-        - @item.each do |a|
+        - @fish.each do |a|
           tr
             td = a.id
             td.font-weight-bold = a.title
@@ -36,33 +36,33 @@ row.mt-2
               td = 'None'
             td
               span
-                = link_to admins_item_path(a) do
+                = link_to admins_fish_path(a) do
                   i.fas.fa-eye
               -if current_admin
                 span.ml-2
-                  = link_to edit_admins_item_path(a) do
+                  = link_to edit_admins_fish_path(a) do
                     i.fas.fa-pen
                 span.ml-2
-                  = link_to admins_item_path(a), method: :delete, data: { confirm: "Are you sure?" } do
+                  = link_to admins_fish_path(a), method: :delete, data: { confirm: "Are you sure?" } do
                     i.fas.fa-trash
 
 span.ml = link_to 'Category',admins_categories_path
 -if current_admin
   div.mb-2
-    = link_to new_admins_item_path do
+    = link_to new_admins_fish_path do
       = button_tag 'Add new Product', class: 'btn btn-primary'
 
 .row
   .col-6
-    = paginate @item
+    = paginate @fish
 
 .row
   .col
     .float-right
       div.mb-2
-      = link_to '/item.csv' do
+      = link_to '/fish.csv' do
         = button_tag 'Download', class: 'btn btn-primary'
     -if current_admin
-      = form_tag admins_item_csv_upload_path, multipart: true do
+      = form_tag admins_fish_csv_upload_path, multipart: true do
         div = file_field_tag :csv_file
         div = submit_tag :upload

@@ -3,15 +3,15 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :homes
   namespace :admins do
-    resources :item do
+    resources :fish do
       member do
         delete :delete_image
       end
     end
     resources :categories do
-      resources :item_categories
+      resources :fish_categories
     end
-    namespace :item do
+    namespace :fish do
       post 'csv_upload'
     end
   end

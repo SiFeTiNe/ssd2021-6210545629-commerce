@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_082159) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "item", force: :cascade do |t|
+  create_table "fish", force: :cascade do |t|
     t.text "title"
     t.text "description"
     t.integer "stock"
@@ -72,17 +72,17 @@ ActiveRecord::Schema.define(version: 2021_04_15_082159) do
     t.integer "status", default: 0, null: false
   end
 
-  create_table "item_categories", force: :cascade do |t|
-    t.integer "item_id", null: false
+  create_table "fish_categories", force: :cascade do |t|
+    t.integer "fish_id", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_item_categories_on_category_id"
-    t.index ["item_id"], name: "index_item_categories_on_item_id"
+    t.index ["category_id"], name: "index_fish_categories_on_category_id"
+    t.index ["fish_id"], name: "index_fish_categories_on_fish_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "item_categories", "categories"
-  add_foreign_key "item_categories", "item"
+  add_foreign_key "fish_categories", "categories"
+  add_foreign_key "fish_categories", "fish"
 end

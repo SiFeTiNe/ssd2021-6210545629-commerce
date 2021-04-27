@@ -1,23 +1,23 @@
-h1 = @item.title
--if @item.primary_image.attached?
-  div = image_tag(@item.primary_image)
--if @item.supported_images.attached?
+h1 = @fish.title
+-if @fish.primary_image.attached?
+  div = image_tag(@fish.primary_image)
+-if @fish.supported_images.attached?
   h2 Others
-  -(0...@item.supported_images.count).each do |f|
-    div = image_tag(@item.supported_images[f])
+  -(0...@fish.supported_images.count).each do |f|
+    div = image_tag(@fish.supported_images[f])
 hr
 h2 = "Categories"
 div
-  - @item.category.each do |f|
+  - @fish.category.each do |f|
     p = "#{f.title}"
 hr
 h3 = "Description"
-div = @item.description
+div = @fish.description
 hr
 h3 = "Stock"
-div  = @item.stock
+div  = @fish.stock
 hr
 h3 = "Price"
 hr
-div = @item.price
+div = @fish.price
 div = link_to 'Back', homes_path
