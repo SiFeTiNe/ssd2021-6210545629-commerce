@@ -1,0 +1,52 @@
+<%= form_with(model: [:users, product]) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_name %>
+    <%= form.text_field :product_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_detail %>
+    <%= form.text_field :product_detail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <h3>Status</h3>
+  <div>
+    <%= form.collection_check_boxes :status, Product.statuses.map, :last, :first %>
+  </div>
+
+  <h3>Primary Image</h3>
+  <div>
+    <%= form.file_field :primary_image %>
+  </div>
+  <h3>Other Image</h3>
+  <div>
+    <%= form.file_field :supported_images, multiple: true %>
+  </div>
+
+  <br>
+  <div class="actions">
+      <%= form.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+<% end %>

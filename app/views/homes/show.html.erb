@@ -1,0 +1,73 @@
+<%= stylesheet_link_tag 'product_show', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to '/' do %>
+  <%= button_tag "Back", class: "btn" %>
+<%end%>
+
+<div class="show-product-info">
+  <h2 class="sm-title"><%= @products.product_name %></h2>
+  <p class="product-detail"><%= @products.product_detail %></p>
+  <span>
+    <p class="product-quantity"><%= @products.quantity %> left</p>
+    <p class="product-price">$<%= @products.price %></p>
+  </span>
+  <div style="float:right;">
+    <%= link_to home_create_order_path(@products) do %>
+      <%= button_tag '<i class="fas fa-dollar-sign"></i> buy now'.html_safe, class: 'btn btn-primary btn-sm' %>
+    <%end%>
+  </div>
+  <div>
+    <%= link_to '#' do %>
+      <%= button_tag '<i class="fas fa-cart-plus"></i> add to cart'.html_safe, class: 'btn btn-sm' %>
+    <%end%>
+  </div>
+
+</div>
+
+
+<div class="slideshow-container">
+  <% if @products.primary_image.attached? %>
+    <div class="mySlides fade" style="display:none">
+      <div class="numbertext">1 / <%= @products.supported_images.count+1 %></div>
+      <div class="show-img-container">
+        <div class="show-img-frame">
+          <%= image_tag(@products.primary_image, style: 'width:100%;') %>
+        </div>
+        <div class="text">1</div>
+      </div>
+    </div>
+  <%else%>
+    <div class="mySlides fade" style="display:none">
+      <div class="numbertext">1 / <%= @products.supported_images.count+1 %></div>
+      <div class="show-img-container">
+        <div class="show-img-frame">
+          <div class="no-show-img"><i class="fas fa-archive" style="color:#ebebeb;"></i></div>
+        </div>
+        <div class="text">1</div>
+      </div>
+    </div>
+  <%end%>
+  <% if @products.supported_images.attached? %>
+    <% (0...@products.supported_images.count).each do |pic| %>
+
+      <div class="mySlides fade" style="display:none">
+        <div class="numbertext"><%= pic+2 %> / <%= @products.supported_images.count+1 %></div>
+        <div class="show-img-container">
+          <div class="show-img-frame">
+            <%= image_tag(@products.supported_images[pic], style: 'width:100%;') %>
+          </div>
+          <div class="text"><%= pic+2 %></div>
+        </div>
+      </div>
+
+    <%end%>
+    <!-- Next and previous buttons -->
+  <%end%>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<%= javascript_include_tag 'product_show', 'data-turbolinks-track': 'reload' %>

@@ -1,0 +1,151 @@
+ @import url('https://fonts.googleapis.com/css?family=Roboto');
+ :root {
+     --white-light: rgb(255, 255, 255, 0.5);
+     --alice-blue: #f8f9fa;
+     --grey: #ededed;
+     --dark-grey: rgba(117, 117, 117, 0.5)
+ }
+ *{
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+ }
+ body {
+     font-family: 'Roboto';
+ }
+
+img {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.lg-title,
+.md-title,
+.sm-title {
+    padding: 0.6rem 0;
+    text-transform: capitalize;
+}
+.lg-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1.3rem 0;
+}
+.md-title {
+    font-size: 2rem;
+}
+.sm-title {
+    font-size: 2rem;
+    font-weight: 300;
+}
+.text-light {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 0.5;
+    margin: 0.4rem 0;
+}
+.products {
+    background: white;
+    padding: 1rem 0;
+}
+.products .text-light {
+    text-align: center;
+    width: 70%;
+    margin: 0.9rem auto;
+}
+.products .row {
+    margin: 2rem;
+}
+.product {
+    width: 30vw;
+    margin: 2rem;
+    padding: 1rem;
+    position: relative;
+    display: table-cell;
+}
+.product-content {
+    max-width: 20vw;
+    background: var(--grey);
+    padding: 1rem 0.5rem 3rem 0.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.product-primary-img {
+    background: var(--grey);
+    box-shadow: 0 0 20px 10px var(--white-light);
+    width: 220px;
+    height: 170px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+.product-primary-img-frame {
+    margin: 0 -10%;
+}
+.product-primary-img img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+.product-primary-img:hover {
+    transform: scale(1.2);
+    border-radius: 0;
+}
+.product-sup-img-container {
+    margin: 0.5rem;
+}
+.product-sup-img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+    display: table-cell;
+    transition: 0.5s ease;
+}
+.product-sup-img-frame {
+    margin: 0 -10%;
+}
+.product-sup-img img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+.product-sup-img:hover {
+    transform: scale(2);
+    border-radius: 0;
+}
+.product-info {
+    margin: -1.5rem 0.5rem 0 0.5rem;
+    /* margin-left: 0.5rem;
+    margin-top: -1.5rem; */
+}
+.product-detail {
+    margin-top: -1rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+.product-price {
+    font-size: 1.2rem;
+}
+.product-quantity {
+    float: right;
+}
+.no-img{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    font-size: 5rem;
+    padding-left: 35%;
+    vertical-align: middle;
+    text-shadow: 1px 1px 2px #000000;
+}
+.no-sup-img {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    vertical-align: middle;
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+<%= form_with(model: [:users, categories]) do |form| %>
+  <% if categories.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(categories.errors.count, "error") %> prohibited this categories from being saved:</h2>
+
+      <ul>
+        <% categories.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :category_name %>
+    <%= form.text_field :category_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_description %>
+    <%= form.text_field :category_description %>
+  </div>
+
+  <br>
+  <div class="actions">
+      <%= form.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+<% end %>

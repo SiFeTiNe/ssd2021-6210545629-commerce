@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category name:</strong>
+  <%= @categories.category_name %>
+</p>
+
+<p>
+  <strong>Category description:</strong>
+  <%= @categories.category_description %>
+</p>
+
+<% if current_user %>
+        add product to this category
+        <%= form_with model: [:users, @categories, @categories.product_category.build] do |p| %>
+            <%= p.collection_select :result, Product.all, :product_detail, :product_name %>
+            <%= p.submit %>
+        <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_users_product_path(@categories) %> |
+<%= link_to 'Back', users_categories_path %>

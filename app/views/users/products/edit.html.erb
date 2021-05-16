@@ -1,0 +1,19 @@
+<h1>Editing Product</h1>
+
+<% if @product.primary_image.attached? %>
+  <div><%= image_tag(@product.primary_image, width: 500) %></div>
+  <div><%= link_to 'Remove', delete_image_users_product_url(@product.primary_image.id), method: :delete %></div>
+<%end%>
+<% if @product.supported_images.attached? %>
+  <h2>
+    <% (0...@product.supported_images.count).each do |pic| %>
+      <div><%= image_tag(@product.supported_images[pic], width: 250) %></div>
+      <div><%= link_to 'Remove', delete_image_users_product_url(@product.supported_images[pic].id), method: :delete %></div>
+      <%end%>
+  </h2>
+<%end%>
+
+<%= render 'form', product: @product %>
+
+<%= link_to 'Show', users_product_path(@product) %>
+<%= link_to 'Back', users_products_path %>

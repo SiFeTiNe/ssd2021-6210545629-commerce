@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce",
+  "name": "ssd-commerce",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

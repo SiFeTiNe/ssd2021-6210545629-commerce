@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<row>
+    <span class="span ml"><%= link_to 'admin', users_products_path %></span>
+</row>
+
+<div class="products">
+  <div class="row">
+
+    <% @products.each do |product| %>
+      <div class="col">
+        <div class="product">
+          <%= link_to home_path(product) do %>
+          <div class="product-content">
+
+            <div class="product-primary-img">
+              <div class="product-primary-img-frame">
+              <% if product.primary_image.attached? %>
+                <%= image_tag(product.primary_image, style: 'width:100%;') %>
+              <% else %>
+                <div class="no-img"><i class="fas fa-archive" style="color:#ebebeb;"></i></div>
+              <%end%>
+              </div>
+            </div>
+
+            <div class="product-sup-img-container">
+              <row>
+                <% if product.supported_images.attached? %>
+                  <% (0...product.supported_images.count).each do |pic| %>
+                    <div class="product-sup-img">
+                      <div class="product-sup-img-frame">
+                        <%= image_tag(product.supported_images[pic], style: 'width:100%;') %>
+                      </div>
+                    </div>
+                  <%end%>
+                <% else %>
+                  <div class="product-sup-img">
+                    <div class="product-sup-img-frame">
+                      <div class="no-sup-img"><i class="fas fa-archive"></i></div>
+                    </div>
+                  </div>
+                <%end%>
+                </row>
+            </div>
+
+            <div class="product-info">
+              <h2 class="sm-title"><%= product.product_name %></h2>
+              <p class="product-detail"><%= product.product_detail %></p>
+              <span>
+                <p class="product-quantity"><%= product.quantity %> left</p>
+                <p class="product-price">$<%= product.price %></p>
+              </span>
+            </div>
+
+            <div style="float:right;">
+              <%= link_to home_create_order_path(product) do %>
+                <%= button_tag '<i class="fas fa-dollar-sign"></i> buy now'.html_safe, class: 'btn btn-primary btn-sm' %>
+              <%end%>
+            </div>
+            <div>
+              <%= link_to '#' do %>
+                <%= button_tag '<i class="fas fa-cart-plus"></i> add to cart'.html_safe, class: 'btn btn-sm' %>
+              <%end%>
+            </div>
+  
+          </div>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+
+  </div>
+</div>
+
+<%= paginate @products %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @product.product_name %>
+</h1>
+
+
+<%= link_to home_path(@product) do %>
+  <%= button_tag '<i class="fas fa-eye"></i> see product'.html_safe, class: 'btn btn-sm' %>
+<%end%>
+</br>
+</br>
+<!-- order detail -->
+
+<p>
+  <strong>Customer Name:</strong>
+  <%= @orders.customer_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @orders.address %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @orders.postal_code %>
+</p>
+
+<p>
+  <strong>Order Date:</strong>
+  <%= @orders.order_date %>
+</p>
+
+<%= link_to 'Back', orders_path %>
